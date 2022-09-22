@@ -16,7 +16,7 @@ def register():
     if not username or not password:
         return jsonify(dict(code=101, msg="用户名或密码不能为空"))
     email, name = data.get("email"), data.get("name")
-    if not email or name:
+    if not email or not name:
         return jsonify(dict(code=101, msg="姓名或邮箱不能为空"))
     err = UserDao.register_user(username, name, password, email)
     if err is not None:

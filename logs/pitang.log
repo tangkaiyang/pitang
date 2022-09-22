@@ -7,3 +7,5 @@
 [2022-09-22 12:09:56.832896] INFO: hello world专用: 有人访问你的网站了
 [2022-09-22 12:09:57.685926] INFO: hello world专用: 有人访问你的网站了
 [2022-09-22 12:09:58.542372] INFO: hello world专用: 有人访问你的网站了
+[2022-09-22 21:18:04.558086] INFO: UserDao: 有人访问你的网站了
+[2022-09-22 21:22:21.745016] ERROR: UserDao: 用户注册失败: Unicode-objects must be encoded before hashing

@@ -13,7 +13,8 @@ class Config(object):
     MYSQL_HOST = "127.0.0.1"
     MYSQL_PORT = 3306
     MYSQL_USER = "root"
-    MYSQL_PWD = "123456"
+    # MYSQL_PWD = "123456"
+    MYSQL_PWD = "root"
     DBNAME = "pitang"
 
     # sqlalchemy
