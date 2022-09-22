@@ -1,6 +1,7 @@
 from cmath import log
 from app import pitang
 from app.utils.logger import Log
+from app import dao
 
 
 @pitang.route('/')
