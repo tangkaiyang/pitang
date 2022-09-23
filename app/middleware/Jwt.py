@@ -15,7 +15,8 @@ class UserToken(object):
     def get_token(data):
         new_data = dict({"exp": datetime.utcnow() +
                         timedelta(hours=EXPIRED_HOUR)}, **data)
-        return jwt.encode(new_data, key=UserToken.key).decode()
+        # return jwt.encode(new_data, key=UserToken.key).decode()
+        return jwt.encode(new_data, key=UserToken.key)
 
     @staticmethod
     def parse_token(token):
@@ -27,5 +28,6 @@ class UserToken(object):
     @staticmethod
     def add_salt(password):
         m = hashlib.md5()
-        m.update(password + UserToken.salt)
+        bt = f"{password}{UserToken.salt}".encode("utf-8")
+        m.update(bt)
         return m.hexdigest()
