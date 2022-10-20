@@ -6,7 +6,8 @@ from jwt.exceptions import ExpiredSignatureError
 
 EXPIRED_HOUR = 3
 
-
+# 信息编码成数据,数据解码成信息
+# #e 中文编码成二进制数据,二进制数据解码成中文
 class UserToken(object):
     key = 'pitangToken'
     salt = 'pitang'
