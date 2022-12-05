@@ -39,4 +39,4 @@ def login():
     token = UserToken.get_token(user)
     if err is not None:
         return jsonify(dict(code=110, msg=err))
-    return jsonify(dict(code=200, msg="登录成功", data=dict(token=token, user=user)))
+    return jsonify(dict(code=0, msg="登录成功", data=dict(token=token, user=user)))
