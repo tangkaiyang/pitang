@@ -31,3 +31,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://{}:{}@{}:{}/{}'.format(
         MYSQL_USER, MYSQL_PWD, MYSQL_HOST, MYSQL_PORT, DBNAME)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    GUEST = 0
+    MANAGER = 1
+    ADMIN = 2
