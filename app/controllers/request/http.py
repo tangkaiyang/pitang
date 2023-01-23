@@ -10,7 +10,7 @@ req = Blueprint("request", __name__, url_prefix="/request")
 
 @req.route("/http", methods=['POST'])
 @permission()
-def http_request(user_info):
+def http_request(user_info={}):
     data = request.get_json()
     method = data.get("method")
     if not method:
