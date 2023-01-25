@@ -13,3 +13,6 @@
 [2022-10-26 13:58:36.334377] INFO: UserDao: 有人访问你的网站了
 [2022-12-10 12:01:16.515197] INFO: UserDao: 有人访问你的网站了
 [2023-01-19 15:33:31.487389] INFO: UserDao: 有人访问你的网站了
+[2023-01-25 15:02:18.516274] ERROR: UserDao: 获取用户:1项目列表失败, type object 'Project' has no attribute 'delete_at'
+[2023-01-25 15:05:20.146912] ERROR: UserDao: 查询用户1项目失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-01-25 15:07:44.579321] ERROR: UserDao: 查询用户1项目失败,Query.filter() got an unexpected keyword argument 'user_id'

@@ -14,6 +14,7 @@ class Project(db.Model):
     private = db.Column(db.BOOLEAN, default=False)
 
     def __init__(self, name, owner, create_user, private=False):
+
         self.name = name
         self.owner = owner
         self.private = private

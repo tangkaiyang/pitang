@@ -2,11 +2,13 @@ from app import pitang
 from app.utils.logger import Log
 from app.controllers.auth.user import auth
 from app.controllers.request.http import req
+from app.controllers.project.project import pr
 from app import dao
 
 # 注册蓝图
 pitang.register_blueprint(auth)
 pitang.register_blueprint(req)
+pitang.register_blueprint(pr)
 
 
 @pitang.route('/')
