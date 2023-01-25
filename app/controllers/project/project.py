@@ -45,7 +45,7 @@ def insert_project(user_info):
             return jsonify(dict(code=101, msg="项目名称/负责人不能为空"))
         private = data.get("private", False)
         err = ProjectDao.add_project(
-            data.get("name"), data.get("owner"), user_id, private)
+            data.get("name"), data.get("owner"), user_id, data.get("description", ""), private)
         if err is not None:
             return jsonify(dict(code=101, msg=str(e)))
         return jsonify(dict(code=0, msg="操作成功"))
