@@ -5,6 +5,7 @@ from flask import request
 from app.dao.auth.UserDao import UserDao
 from app.handler.factory import ResponseFactory
 from app.middleware.Jwt import UserToken
+from app.utils.decorator import permission
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -40,3 +41,12 @@ def login():
     if err is not None:
         return jsonify(dict(code=110, msg=err))
     return jsonify(dict(code=0, msg="登录成功", data=dict(token=token, user=user)))
+
+
+@auth.route("/listUser")
+@permission()
+def list_users(user_info):
+    users, err = UserDao.list_users()
+    if err is not None:
+        return jsonify(dict(code=110, msg=err))
+    return jsonify(dict(code=0, msg="操作成功", data=ResponseFactory.model_to_list(users)))

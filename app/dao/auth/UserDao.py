@@ -41,7 +41,8 @@ class UserDao(object):
         try:
             pwd = UserToken.add_salt(password)
             # 查询用户名/密码匹配且没有被删除的用户
-            user = User.query.filter_by(username=username, password=pwd, deleted_at=None).first()
+            user = User.query.filter_by(
+                username=username, password=pwd, deleted_at=None).first()
             if user is None:
                 return None, "用户名或密码错误"
             # 更新用户的最后登录时间
@@ -51,3 +52,12 @@ class UserDao(object):
         except Exception as e:
             UserDao.log.error(f"用户{username}登录失败: {str(e)}")
             return None, str(e)
+
+    @staticmethod
+    def list_users():
+        try:
+            users = User.query.filter_by(deleted_at=None).all()
+            return users, None
+        except Exception as e:
+            UserDao.log.error(f"获取用户列表失败,{str(e)}")
+            return [], str(e)
