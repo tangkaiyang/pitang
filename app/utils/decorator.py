@@ -31,7 +31,7 @@ def permission(role=pitang.config.get("GUEST")):
                 token = headers.get("token")
                 if token is None:
                     return jsonify(dict(code=400, msg="用户信息认证失败,请检查"))
-                print(token)
+                # print(token)
                 user_info = UserToken.parse_token(token)
                 kwargs["user_info"] = user_info
 
