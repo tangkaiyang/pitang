@@ -25,12 +25,13 @@ class ProjectDao(object):
             search = [Project.deleted_at == None]
             if role != pitang.config.get("ADMIN"):
                 project_list, err = ProjectRoleDao.list_project_by_user(user)
-                if err is not None:
-                    raise Exception(err)
+                # if err is not None:
+                #     raise Exception(err)
                 search.append(or_(Project.id in project_list,
                               Project.owner == user, Project.private == False))
             if name:
                 search.append(Project.name.ilike("%{}%".format(name)))
+            print(search)
             data = Project.query.filter(*search)
             total = data.count()
             return data.order_by(Project.created_at.desc()).paginate(page, per_page=size).items, total, None

@@ -22,8 +22,8 @@ class Config(object):
     # if ip == "172.30.7.222":
     #     MYSQL_PWD = "123456"
     # else:
-    MYSQL_PWD = "root"
-    # MYSQL_PWD = "123456"
+    # MYSQL_PWD = "root"
+    MYSQL_PWD = "123456"
 
     DBNAME = "pitang"
 
