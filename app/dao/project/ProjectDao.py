@@ -28,7 +28,7 @@ class ProjectDao(object):
                 # if err is not None:
                 #     raise Exception(err)
                 search.append(or_(Project.id in project_list,
-                              Project.owner == user, Project.private == False))
+                                  Project.owner == user, Project.private == False))
             if name:
                 search.append(Project.name.ilike("%{}%".format(name)))
             print(search)

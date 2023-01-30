@@ -47,7 +47,7 @@ def insert_project(user_info):
         err = ProjectDao.add_project(
             data.get("name"), data.get("owner"), user_id, data.get("description", ""), private)
         if err is not None:
-            return jsonify(dict(code=101, msg=str(e)))
+            return jsonify(dict(code=101, msg=str(err)))
         return jsonify(dict(code=0, msg="操作成功"))
     except Exception as e:
         return jsonify(dict(code=111, msg=str(e)))
