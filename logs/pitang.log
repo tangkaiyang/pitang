@@ -899,3 +899,7 @@ WHERE project.deleted_at IS NULL AND (project.owner = %(owner_1)s OR project.pri
 [2023-02-01 08:24:32.673969] ERROR: UserDao: 新增项目:projectName失败,filter() got an unexpected keyword argument 'name'
 [2023-02-01 08:24:43.261176] ERROR: UserDao: 新增项目:projectName失败,filter() got an unexpected keyword argument 'project_name'
 [2023-02-01 08:24:43.262174] ERROR: UserDao: 新增项目:projectName失败,filter() got an unexpected keyword argument 'project_name'
+[2023-02-01 09:14:53.998356] ERROR: UserDao: 查询用户1项目失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-01 09:15:16.380103] ERROR: UserDao: 查询用户1项目失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-01 09:16:46.195337] ERROR: UserDao: 查询用户1项目失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-01 09:17:26.082141] ERROR: UserDao: 新增项目:project_name失败,Query.filter() got an unexpected keyword argument 'name'
