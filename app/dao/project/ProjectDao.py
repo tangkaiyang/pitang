@@ -43,7 +43,7 @@ class ProjectDao(object):
     @staticmethod
     def add_project(name, owner, user, description, private):
         try:
-            data = Project.query.filter(name=name, deleted_at=None).first()
+            data = Project.query.filter_by(name=name, deleted_at=None).first()
             if data is not None:
                 return "项目已存在"
             pr = Project(name, owner, user, description, private)

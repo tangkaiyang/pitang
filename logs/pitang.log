@@ -903,3 +903,8 @@ WHERE project.deleted_at IS NULL AND (project.owner = %(owner_1)s OR project.pri
 [2023-02-01 09:15:16.380103] ERROR: UserDao: 查询用户1项目失败,Query.filter() got an unexpected keyword argument 'user_id'
 [2023-02-01 09:16:46.195337] ERROR: UserDao: 查询用户1项目失败,Query.filter() got an unexpected keyword argument 'user_id'
 [2023-02-01 09:17:26.082141] ERROR: UserDao: 新增项目:project_name失败,Query.filter() got an unexpected keyword argument 'name'
+[2023-02-02 06:59:35.865572] ERROR: UserDao: 新增项目:project_name失败,filter() got an unexpected keyword argument 'name'
+[2023-02-02 07:18:44.960465] ERROR: UserDao: 新增项目:project_name失败,(mysql.connector.errors.IntegrityError) 1062 (23000): Duplicate entry 'project_name' for key 'ix_project_name'
+[SQL: INSERT INTO project (name, owner, created_at, updated_at, deleted_at, create_user, update_user, private, description) VALUES (%(name)s, %(owner)s, %(created_at)s, %(updated_at)s, %(deleted_at)s, %(create_user)s, %(update_user)s, %(private)s, %(description)s)]
+[parameters: {'name': 'project_name', 'owner': '0', 'created_at': datetime.datetime(2023, 2, 2, 7, 18, 44, 712466), 'updated_at': datetime.datetime(2023, 2, 2, 7, 18, 44, 712466), 'deleted_at': None, 'create_user': 1, 'update_user': 1, 'private': 1, 'description': 'description'}]
+(Background on this error at: http://sqlalche.me/e/14/gkpj)
