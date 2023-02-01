@@ -19,4 +19,4 @@ def hello_world():
 
 
 if __name__ == "__main__":
-    pitang.run("0.0.0.0", threaded=True, port="7777")
+    pitang.run("0.0.0.0", threaded=True, port="7777", debug=True)

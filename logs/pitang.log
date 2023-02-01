@@ -889,3 +889,13 @@ WHERE project.deleted_at IS NULL AND (project.owner = %(owner_1)s OR project.pri
 [2023-01-31 06:43:46.234591] ERROR: UserDao: 查询用户1项目失败,filter() got an unexpected keyword argument 'user_id'
 [2023-01-31 06:52:07.651290] ERROR: UserDao: 新增项目:1111失败,filter() got an unexpected keyword argument 'name'
 [2023-01-31 06:53:07.394372] ERROR: UserDao: 新增项目:1111失败,filter() got an unexpected keyword argument 'name'
+[2023-02-01 08:05:05.582573] INFO: UserDao: 有人访问你的网站了
+[2023-02-01 08:18:06.399440] ERROR: UserDao: 新增项目:1失败,filter() got an unexpected keyword argument 'name'
+[2023-02-01 08:18:12.608666] ERROR: UserDao: 新增项目:1失败,filter() got an unexpected keyword argument 'name'
+[2023-02-01 08:18:31.477543] ERROR: UserDao: 新增项目:1失败,filter() got an unexpected keyword argument 'name'
+[2023-02-01 08:18:46.879703] ERROR: UserDao: 新增项目:1失败,filter() got an unexpected keyword argument 'name'
+[2023-02-01 08:18:54.989121] ERROR: UserDao: 新增项目:1失败,filter() got an unexpected keyword argument 'name'
+[2023-02-01 08:20:54.775501] ERROR: UserDao: 新增项目:1失败,filter() got an unexpected keyword argument 'name'
+[2023-02-01 08:24:32.673969] ERROR: UserDao: 新增项目:projectName失败,filter() got an unexpected keyword argument 'name'
+[2023-02-01 08:24:43.261176] ERROR: UserDao: 新增项目:projectName失败,filter() got an unexpected keyword argument 'project_name'
+[2023-02-01 08:24:43.262174] ERROR: UserDao: 新增项目:projectName失败,filter() got an unexpected keyword argument 'project_name'
