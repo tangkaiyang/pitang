@@ -53,6 +53,20 @@ class ProjectDao(object):
             ProjectDao.log.error(f"新增项目:{name}失败,{e}")
             return f"新增项目: {name}失败, {e}"
 
+    @staticmethod
+    def query_project(project_id: int):
+        try:
+            data = Project.query.filter_by(id=project_id, deleted_at=None).first()
+            if data is None:
+                return None, [], "项目不存在"
+            roles, err = ProjectRoleDao.list_role(project_id)
+            if err is not None:
+                return None, [], err
+            return data, roles, None
+        except Exception as e:
+            ProjectDao.log.error(f"查询项目:{project_id}失败,{e}")
+            return None, [], f"查询项目:{project_id}失败,{e}"
+
 
 if __name__ == "__main__":
     print([Project.deleted_at == None])
