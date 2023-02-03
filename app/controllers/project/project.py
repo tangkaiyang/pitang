@@ -51,3 +51,16 @@ def insert_project(user_info):
         return jsonify(dict(code=0, msg="操作成功"))
     except Exception as e:
         return jsonify(dict(code=111, msg=str(e)))
+
+    @pr.route("/query")
+    @permission()
+    def query_project(user_info):
+        project_id = request.args.get("projectId")
+        if project_id is not None or not project_id.isdigit():
+            return jsonify(dict(code=101, msg="请传入正确的projectId"))
+        result = dict()
+        date, roles, err = ProjectDao.query_project(project_id)
+        if err is not None:
+            return jsonify(dict(code=110, data=result, msg=err))
+        result.update({"project": ResponseFactory().model_to_dict(data), "roles": ResponseFactory.model_to_list(roles)})
+        return jsonify(dict(code=0, data=result, msg="操作成功"))
