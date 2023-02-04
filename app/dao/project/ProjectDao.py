@@ -5,6 +5,7 @@ from app.dao.project.ProjectRoleDao import ProjectRoleDao
 from app.models import db
 from app.models.project import Project
 from app.utils.logger import Log
+from datetime import datetime
 
 
 class ProjectDao(object):
@@ -66,6 +67,38 @@ class ProjectDao(object):
         except Exception as e:
             ProjectDao.log.error(f"查询项目:{project_id}失败,{e}")
             return None, [], f"查询项目:{project_id}失败,{e}"
+
+    @staticmethod
+    def update_project(user, role, project_id, name, owner, private, description):
+        """
+        编辑项目
+        :param user:
+        :param role: 仅项目负责人和超级管理员可编辑项目
+        :param project_id:
+        :param name:
+        :param owner:
+        :param private:
+        :param description:
+        :return:
+        """
+        try:
+            data = Project.query.filter_by(id=project_id, deleted_at=None).first()
+            if data is None:
+                return "项目不存在"
+            # 仅项目负责人和超级管理员可编辑
+            if data.owner != owner and role<pitang.config.get("ADMIN"):
+                return "您没有权限修改项目负责人"
+            data.name = name
+            data.owner = owner
+            data.private = private
+            data.description = description
+            data.updated_at = datetime.now()
+            data.update_user = user
+            db.session.commit()
+        except Exception as e:
+            msg = f"编辑项目:{name}失败,{e}"
+            ProjectDao.log.error(msg)
+            return msg
 
 
 if __name__ == "__main__":
