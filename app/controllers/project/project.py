@@ -58,7 +58,7 @@ def insert_project(user_info):
 @permission()
 def query_project(user_info):
     project_id = request.args.get("projectId")
-    if project_id is not None or not project_id.isdigit():
+    if project_id is None or not project_id.isdigit():
         return jsonify(dict(code=101, msg="请传入正确的projectId"))
     result = dict()
     data, roles, err = ProjectDao.query_project(project_id)
