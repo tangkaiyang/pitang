@@ -50,8 +50,18 @@ class ProjectRoleDao(object):
     @staticmethod
     def list_role(project_id: int):
         try:
-            roles = ProjectRole.query.filter_by(project_id=project_id, deleted_at=None).all()
+            roles = ProjectRole.query.filter_by(
+                project_id=project_id, deleted_at=None).all()
             return roles, None
         except Exception as e:
             ProjectRoleDao.log.error(f"查询项目:{project_id}角色列表失败, {e}")
             return [], f"查询项目:{project_id}角色列表失败, {e}"
+
+    @staticmethod
+    def update_project_role(role_id, project_role, user, user_role):
+        pass
+
+    @staticmethod
+    def insert_project_role(user_id, project_id, project_role, user):
+        try:
+            role = ProjectRole(user_id, project_id, project_role, create_user)

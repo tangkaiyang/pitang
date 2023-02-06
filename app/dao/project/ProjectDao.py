@@ -57,7 +57,8 @@ class ProjectDao(object):
     @staticmethod
     def query_project(project_id: int):
         try:
-            data = Project.query.filter_by(id=project_id, deleted_at=None).first()
+            data = Project.query.filter_by(
+                id=project_id, deleted_at=None).first()
             if data is None:
                 return None, [], "项目不存在"
             roles, err = ProjectRoleDao.list_role(project_id)
@@ -82,11 +83,12 @@ class ProjectDao(object):
         :return:
         """
         try:
-            data = Project.query.filter_by(id=project_id, deleted_at=None).first()
+            data = Project.query.filter_by(
+                id=project_id, deleted_at=None).first()
             if data is None:
                 return "项目不存在"
             # 仅项目负责人和超级管理员可编辑
-            if data.owner != owner and role<pitang.config.get("ADMIN"):
+            if data.owner != owner and role < pitang.config.get("ADMIN"):
                 return "您没有权限修改项目负责人"
             data.name = name
             data.owner = owner
