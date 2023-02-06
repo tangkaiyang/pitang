@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 
 from app import pitang
 from app.dao.project.ProjectDao import ProjectDao
+from app.dao.project.ProjectRoleDao import ProjectRoleDao
 from app.handler.factory import ResponseFactory
 from app.handler.page import PageHandler
 from app.utils.decorator import permission
@@ -64,7 +65,8 @@ def query_project(user_info):
     data, roles, err = ProjectDao.query_project(project_id)
     if err is not None:
         return jsonify(dict(code=110, data=result, msg=err))
-    result.update({"project": ResponseFactory().model_to_dict(data), "roles": ResponseFactory.model_to_list(roles)})
+    result.update({"project": ResponseFactory().model_to_dict(
+        data), "roles": ResponseFactory.model_to_list(roles)})
     return jsonify(dict(code=0, data=result, msg="操作成功"))
 
 
@@ -86,6 +88,22 @@ def update_project(user_info):
         return jsonify(dict(code=0, msg="操作成功"))
     except Exception as e:
         return jsonify(dict(code=111, msg=str(e)))
+
+
+@pr.route("/role/insert", methods=["POST"])
+@permission()
+def insert_project_role(user_info):
+    try:
+        data = request.get_json()
+        if data.get("user_id") is None or data.get("project_role") is None or data.get("project_id") is None:
+            return jsonify(dict(code=101, msg="请求参数有误"))
+        err = ProjectRoleDao.insert_project_role(data.get("user_id"), data.get(
+            "project_id"), data.get("project_role"), user_info["id"])
+        if err is not None:
+            return jsonify(dict(code=110, msg=err))
+    except Exception as e:
+        return jsonify(dict(code=110, msg=str(e)))
+    return jsonify(dict(code=0, msg="操作成功"))
 
 
 if __name__ == '__main__':
