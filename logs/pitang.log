@@ -908,3 +908,4 @@ WHERE project.deleted_at IS NULL AND (project.owner = %(owner_1)s OR project.pri
 [SQL: INSERT INTO project (name, owner, created_at, updated_at, deleted_at, create_user, update_user, private, description) VALUES (%(name)s, %(owner)s, %(created_at)s, %(updated_at)s, %(deleted_at)s, %(create_user)s, %(update_user)s, %(private)s, %(description)s)]
 [parameters: {'name': 'project_name', 'owner': '0', 'created_at': datetime.datetime(2023, 2, 2, 7, 18, 44, 712466), 'updated_at': datetime.datetime(2023, 2, 2, 7, 18, 44, 712466), 'deleted_at': None, 'create_user': 1, 'update_user': 1, 'private': 1, 'description': 'description'}]
 (Background on this error at: http://sqlalche.me/e/14/gkpj)
+[2023-02-12 08:28:02.806261] ERROR: UserDao: 查询用户2项目失败,filter() got an unexpected keyword argument 'user_id'

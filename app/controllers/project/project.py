@@ -106,6 +106,23 @@ def insert_project_role(user_info):
     return jsonify(dict(code=0, msg="操作成功"))
 
 
+@pr.route("/role/update", methods=["POST"])
+@permission()
+def update_project_role(user_info):
+    try:
+        data = request.get_json()
+        if data.get("user_id") is None or data.get("project_role") is None or data.get("project_id") is None \
+                or data.get("id") is None:
+            return jsonify(dict(code=101, msg="请求参数有误"))
+        err = ProjectRoleDao.update_project_role(data.get("id"), data.get("project_role"),
+                                                 user_info["id"], user_info["role"])
+        if err is not None:
+            return jsonify(dict(code=110, msg=err))
+    except Exception as e:
+        return jsonify(dict(code=110, msg=str(e)))
+    return jsonify(dict(code=0, msg="操作成功"))
+
+
 if __name__ == '__main__':
     a = "1"
     print(a.isdigit())
