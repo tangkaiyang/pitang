@@ -909,3 +909,9 @@ WHERE project.deleted_at IS NULL AND (project.owner = %(owner_1)s OR project.pri
 [parameters: {'name': 'project_name', 'owner': '0', 'created_at': datetime.datetime(2023, 2, 2, 7, 18, 44, 712466), 'updated_at': datetime.datetime(2023, 2, 2, 7, 18, 44, 712466), 'deleted_at': None, 'create_user': 1, 'update_user': 1, 'private': 1, 'description': 'description'}]
 (Background on this error at: http://sqlalche.me/e/14/gkpj)
 [2023-02-12 08:28:02.806261] ERROR: UserDao: 查询用户2项目失败,filter() got an unexpected keyword argument 'user_id'
+[2023-02-14 07:49:55.748141] ERROR: UserDao: 获取测试用例失败:(mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'test_case.priority' in 'field list'
+[SQL: SELECT test_case.id AS test_case_id, test_case.name AS test_case_name, test_case.request_type AS test_case_request_type, test_case.url AS test_case_url, test_case.request_method AS test_case_request_method, test_case.request_header AS test_case_request_header, test_case.body AS test_case_body, test_case.project_id AS test_case_project_id, test_case.tag AS test_case_tag, test_case.`status` AS test_case_status, test_case.priority AS test_case_priority, test_case.catalogue AS test_case_catalogue, test_case.expected AS test_case_expected, test_case.created_at AS test_case_created_at, test_case.updated_at AS test_case_updated_at, test_case.deleted_at AS test_case_deleted_at, test_case.create_user AS test_case_create_user, test_case.update_user AS test_case_update_user 
+FROM test_case 
+WHERE test_case.project_id = %(project_id_1)s AND test_case.deleted_at IS NULL ORDER BY test_case.name ASC]
+[parameters: {'project_id_1': '3'}]
+(Background on this error at: http://sqlalche.me/e/14/f405)
