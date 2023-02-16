@@ -24,7 +24,7 @@ class TestCase(db.Model):
     create_user = db.Column(db.INT, nullable=True)
     update_user = db.Column(db.INT, nullable=True)
 
-    def __init__(self, name, request_type, url, project_id, tag, status, catalogue, expected, create_user, priority="p3", request_header=None, params=None, body=None, request_method=None):
+    def __init__(self, name, request_type, url, project_id, status, catalogue, expected, create_user, tag=None, priority="p3", request_header=None, params=None, body=None, request_method=None):
         self.name = name
         self.request_type = request_type
         self.url = url

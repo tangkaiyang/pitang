@@ -8,6 +8,8 @@ from functools import wraps
 from flask import request, jsonify
 from app.middleware.Jwt import UserToken
 
+from jsonschema import validate, FormatChecker, ValidationError
+
 FORBIDDEN = "对不起,你没有足够的权限"
 
 
@@ -43,3 +45,22 @@ def permission(role=pitang.config.get("GUEST")):
             return func(*args, **kwargs)
         return wrapper
     return login_required
+
+
+def json_validate(sc):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            try:
+                if request.get_json() is not None:
+                    validate(request.get_json(), sc,
+                             format_checker=FormatChecker())
+                else:
+                    raise Exception("请求JSON参数不合法")
+            except ValidationError as e:
+                return jsonify(dict(code=101, msg=str(e.message)))
+            except Exception as e:
+                return jsonify(dict(code=101, msg=str(e)))
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator

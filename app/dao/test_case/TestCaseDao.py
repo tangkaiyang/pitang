@@ -31,3 +31,25 @@ class TestCaseDao(object):
         tree = [dict(key=f"cat_{key}", children=[{"key": f"case_{child.id}", "title": child.name}
                      for cihld in result[key]], title=key, total=len(result[key])) for key in keys]
         return tree
+
+    @staticmethod
+    def insert_test_case(test_case, user):
+        """新增用例
+
+        Args:
+            test_case (TestCase): 测试用例
+            user (int): 创建人
+        """
+        try:
+            data = TestCase.query.filter_by(name=test_case.get(
+                "name"), project_id=test_case.get("project_id"), deleted_at=None).first()
+            if data is not None:
+                return "用例名称重复"
+            cs = TestCase(**test_case, create_user=user)
+            db.session.add(cs)
+            db.session.commit()
+        except Exception as e:
+            msg = f"添加用例失败:{str(e)}"
+            TestCaseDao.log.error(msg)
+            return msg
+        return None
