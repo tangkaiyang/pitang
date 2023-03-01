@@ -915,3 +915,11 @@ FROM test_case
 WHERE test_case.project_id = %(project_id_1)s AND test_case.deleted_at IS NULL ORDER BY test_case.name ASC]
 [parameters: {'project_id_1': '3'}]
 (Background on this error at: http://sqlalche.me/e/14/f405)
+[2023-02-27 16:04:08.440833] ERROR: UserDao: 添加用户失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-27 16:04:08.534181] ERROR: UserDao: 添加用户失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-27 16:04:09.743079] ERROR: UserDao: 添加用户失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-27 16:04:09.887161] ERROR: UserDao: 添加用户失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-27 16:04:09.995162] ERROR: UserDao: 添加用户失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-27 16:04:10.180158] ERROR: UserDao: 添加用户失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-27 16:04:10.464157] ERROR: UserDao: 添加用户失败,Query.filter() got an unexpected keyword argument 'user_id'
+[2023-02-27 16:04:10.561158] ERROR: UserDao: 添加用户失败,Query.filter() got an unexpected keyword argument 'user_id'
