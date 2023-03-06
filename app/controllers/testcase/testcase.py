@@ -28,9 +28,9 @@ testcase = {
         "request_header": {
             "type": "string",
         },
-        "params": {
-            "type": "string",
-        },
+        # "params": {
+        #     "type": "string",
+        # },
         "body": {
             "type": "string",
         },
@@ -49,11 +49,12 @@ testcase = {
         "catalogue": {
             "type": "string",
         },
-        "expected": {
-            "type": "string",
-        },
+        # "expected": {
+        #     "type": "string",
+        # },
     },
-    "required": ["expected", "catalogue", "priority", "status", "project_id", "request_type", "url", "name"]
+    # "required": ["expected", "catalogue", "priority", "status", "project_id", "request_type", "url", "name"]
+    "required": ["catalogue", "priority", "status", "project_id", "request_type", "url", "name"]
 }
 
 

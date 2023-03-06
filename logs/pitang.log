@@ -1,0 +1,8 @@
+[2023-03-06 15:59:38.683227] ERROR: UserDao: 添加用例失败:__init__() missing 1 required positional argument: 'expected'
+[2023-03-06 16:00:12.322166] ERROR: UserDao: 添加用例失败:name 'expected' is not defined
+[2023-03-06 16:00:58.489822] ERROR: UserDao: 添加用例失败:name 'expected' is not defined
+[2023-03-06 16:01:55.520880] ERROR: UserDao: 添加用例失败:name 'expected' is not defined
+[2023-03-06 16:02:08.766462] ERROR: UserDao: 添加用例失败:name 'expected' is not defined
+[2023-03-06 16:04:14.227694] ERROR: UserDao: 添加用例失败:name 'expected' is not defined
+[2023-03-06 16:04:21.050543] ERROR: UserDao: 添加用例失败:name 'expected' is not defined
+[2023-03-06 16:09:47.143643] ERROR: UserDao: 获取测试用例失败:name 'child' is not defined
