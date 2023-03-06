@@ -28,8 +28,9 @@ class TestCaseDao(object):
         for cs in case_list:
             result[cs.catalogue].append(cs)
         keys = sorted(result.keys())
+        # todo title空解决
         tree = [dict(key=f"cat_{key}", children=[{"key": f"case_{child.id}", "title": child.name}
-                     for cihld in result[key]], title=key, total=len(result[key])) for key in keys]
+                     for child in result[key]], title=key, total=len(result[key])) for key in keys]
         return tree
 
     @staticmethod

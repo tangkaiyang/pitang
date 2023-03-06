@@ -6,3 +6,5 @@
 [2023-03-06 16:04:14.227694] ERROR: UserDao: 添加用例失败:name 'expected' is not defined
 [2023-03-06 16:04:21.050543] ERROR: UserDao: 添加用例失败:name 'expected' is not defined
 [2023-03-06 16:09:47.143643] ERROR: UserDao: 获取测试用例失败:name 'child' is not defined
+[2023-03-06 16:35:59.358622] ERROR: UserDao: 获取测试用例失败:name 'child' is not defined
+[2023-03-06 16:36:31.128235] ERROR: UserDao: 获取测试用例失败:name 'child' is not defined
