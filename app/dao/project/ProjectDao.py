@@ -43,12 +43,12 @@ class ProjectDao(object):
             return [], 0, f"获取用户:{user}项目列表失败,{e}"
 
     @staticmethod
-    def add_project(name, owner, user, description, private):
+    def add_project(name, owner, app, user, description, private):
         try:
             data = Project.query.filter_by(name=name, deleted_at=None).first()
             if data is not None:
                 return "项目已存在"
-            pr = Project(name, owner, user, description, private)
+            pr = Project(name, owner, app, user, description, private)
             db.session.add(pr)
             db.session.commit()
         except Exception as e:
@@ -74,7 +74,7 @@ class ProjectDao(object):
             return None, [], f"查询项目:{project_id}失败,{e}"
 
     @staticmethod
-    def update_project(user, role, project_id, name, owner, private, description):
+    def update_project(user, role, project_id, name, app, owner, private, description):
         """
         编辑项目
         :param user:
@@ -95,6 +95,7 @@ class ProjectDao(object):
             if data.owner != owner and role < pitang.config.get("ADMIN"):
                 return "您没有权限修改项目负责人"
             data.name = name
+            data.app = app
             data.owner = owner
             data.private = private
             data.description = description

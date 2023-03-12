@@ -30,7 +30,8 @@ class TestCaseDao(object):
         keys = sorted(result.keys())
         # todo title空解决
         tree = [dict(key=f"cat_{key}", children=[{"key": f"case_{child.id}", "title": child.name}
-                     for child in result[key]], title=key, total=len(result[key])) for key in keys]
+                                                 for child in result[key]], title=key, total=len(result[key])) for key
+                in keys]
         return tree
 
     @staticmethod
@@ -54,3 +55,15 @@ class TestCaseDao(object):
             TestCaseDao.log.error(msg)
             return msg
         return None
+
+    @staticmethod
+    def query_test_case(case_id):
+        try:
+            data = TestCase.query.filter_by(id=case_id, deleted_at=None).first()
+            if data is None:
+                return None, "用例不存在"
+            return data, None
+        except Exception as e:
+            msg = f"查询用例失败:{str(e)}"
+            TestCaseDao.log.error(msg)
+            return None, msg

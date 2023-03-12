@@ -8,3 +8,36 @@
 [2023-03-06 16:09:47.143643] ERROR: UserDao: 获取测试用例失败:name 'child' is not defined
 [2023-03-06 16:35:59.358622] ERROR: UserDao: 获取测试用例失败:name 'child' is not defined
 [2023-03-06 16:36:31.128235] ERROR: UserDao: 获取测试用例失败:name 'child' is not defined
+[2023-03-12 09:39:52.577555] ERROR: UserDao: 查询项目:3失败,(mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'project.app' in 'field list'
+[SQL: SELECT project.id AS project_id, project.name AS project_name, project.owner AS project_owner, project.app AS project_app, project.created_at AS project_created_at, project.updated_at AS project_updated_at, project.deleted_at AS project_deleted_at, project.create_user AS project_create_user, project.update_user AS project_update_user, project.private AS project_private, project.description AS project_description 
+FROM project 
+WHERE project.id = %(id_1)s AND project.deleted_at IS NULL 
+ LIMIT %(param_1)s]
+[parameters: {'id_1': '3', 'param_1': 1}]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+[2023-03-12 09:41:58.628241] ERROR: UserDao: 查询项目:3失败,(mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'project.app' in 'field list'
+[SQL: SELECT project.id AS project_id, project.name AS project_name, project.owner AS project_owner, project.app AS project_app, project.created_at AS project_created_at, project.updated_at AS project_updated_at, project.deleted_at AS project_deleted_at, project.create_user AS project_create_user, project.update_user AS project_update_user, project.private AS project_private, project.description AS project_description 
+FROM project 
+WHERE project.id = %(id_1)s AND project.deleted_at IS NULL 
+ LIMIT %(param_1)s]
+[parameters: {'id_1': '3', 'param_1': 1}]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+[2023-03-12 10:44:22.108821] ERROR: UserDao: 查询项目:2失败,(mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'project.app' in 'field list'
+[SQL: SELECT project.id AS project_id, project.name AS project_name, project.owner AS project_owner, project.app AS project_app, project.created_at AS project_created_at, project.updated_at AS project_updated_at, project.deleted_at AS project_deleted_at, project.create_user AS project_create_user, project.update_user AS project_update_user, project.private AS project_private, project.description AS project_description 
+FROM project 
+WHERE project.id = %(id_1)s AND project.deleted_at IS NULL 
+ LIMIT %(param_1)s]
+[parameters: {'id_1': '2', 'param_1': 1}]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+[2023-03-12 10:46:42.995756] ERROR: UserDao: 查询项目:2失败,(mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'project.app' in 'field list'
+[SQL: SELECT project.id AS project_id, project.name AS project_name, project.owner AS project_owner, project.app AS project_app, project.created_at AS project_created_at, project.updated_at AS project_updated_at, project.deleted_at AS project_deleted_at, project.create_user AS project_create_user, project.update_user AS project_update_user, project.private AS project_private, project.description AS project_description 
+FROM project 
+WHERE project.id = %(id_1)s AND project.deleted_at IS NULL 
+ LIMIT %(param_1)s]
+[parameters: {'id_1': '2', 'param_1': 1}]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+[2023-03-12 10:50:09.702283] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
+[2023-03-12 10:54:02.420374] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
+[2023-03-12 19:59:20.255104] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
+[2023-03-12 20:00:22.794862] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
+[2023-03-12 20:02:36.997512] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument

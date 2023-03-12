@@ -6,6 +6,7 @@ class Project(db.Model):
     id = db.Column(db.INT, primary_key=True)
     name = db.Column(db.String(16), unique=True, index=True)
     owner = db.Column(db.INT)
+    app = db.Column(db.String(32), index=True)
     created_at = db.Column(db.DATETIME, nullable=False)
     updated_at = db.Column(db.DATETIME, nullable=False)
     deleted_at = db.Column(db.DATETIME)
@@ -14,10 +15,11 @@ class Project(db.Model):
     private = db.Column(db.BOOLEAN, default=False)
     description = db.Column(db.String(200))
 
-    def __init__(self, name, owner, create_user, description="", private=False):
+    def __init__(self, name, owner, app, create_user, description="", private=False):
 
         self.name = name
         self.owner = owner
+        self.app = app
         self.private = private
         self.description = description
         self.created_at = datetime.now()
