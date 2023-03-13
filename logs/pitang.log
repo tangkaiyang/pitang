@@ -41,3 +41,15 @@ WHERE project.id = %(id_1)s AND project.deleted_at IS NULL
 [2023-03-12 19:59:20.255104] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
 [2023-03-12 20:00:22.794862] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
 [2023-03-12 20:02:36.997512] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
+[2023-03-13 12:16:03.201575] ERROR: UserDao: 获取用户:1项目列表失败, (mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'project.app' in 'field list'
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT project.id AS project_id, project.name AS project_name, project.owner AS project_owner, project.app AS project_app, project.created_at AS project_created_at, project.updated_at AS project_updated_at, project.deleted_at AS project_deleted_at, project.create_user AS project_create_user, project.update_user AS project_update_user, project.private AS project_private, project.description AS project_description 
+FROM project 
+WHERE project.deleted_at IS NULL) AS anon_1]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+[2023-03-13 12:16:12.233157] ERROR: UserDao: 获取用户:1项目列表失败, (mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'project.app' in 'field list'
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT project.id AS project_id, project.name AS project_name, project.owner AS project_owner, project.app AS project_app, project.created_at AS project_created_at, project.updated_at AS project_updated_at, project.deleted_at AS project_deleted_at, project.create_user AS project_create_user, project.update_user AS project_update_user, project.private AS project_private, project.description AS project_description 
+FROM project 
+WHERE project.deleted_at IS NULL) AS anon_1]
+(Background on this error at: http://sqlalche.me/e/14/f405)
