@@ -80,3 +80,18 @@ def query_testcase(user_info):
     if err:
         return jsonify(dict(code=110, msg=err))
     return jsonify(dict(code=0, data=ResponseFactory.model_to_dict(data), msg="操作成功"))
+
+
+@ts.route("/update")
+@permission
+def update_testcase(data, user_info):
+    """
+    更新用例接口
+    :param data:用例form表单
+    :param user_info: 用户信息
+    :return:
+    """
+    err = TestCaseDao.update_test_case(data, user_info["id"])
+    if err:
+        return jsonify(dict(code=110, msg=err))
+    return jsonify(dict(code=0, msg="操作成功"))

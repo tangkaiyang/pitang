@@ -1,5 +1,5 @@
 from app import pitang
-from app.models import db
+from app.models import db, Session, update_model
 from app.models.test_case import TestCase
 from app.utils.logger import Log
 from datetime import datetime
@@ -67,3 +67,24 @@ class TestCaseDao(object):
             msg = f"查询用例失败:{str(e)}"
             TestCaseDao.log.error(msg)
             return None, msg
+
+    @staticmethod
+    def update_test_case(test_case, user):
+        """
+        更新测试用例
+        :param test_case: 测试用例
+        :param user: 修改人
+        :return:
+        """
+        try:
+            with Session() as session:
+                data = session.query(TestCase).filter_by(id=test_case, deleted_at=None).first()
+                if data is None:
+                    return "用例不存在"
+                update_model(data, test_case, user)
+                session.commit()
+        except Exception as e:
+            msg = f"编辑用例失败:{str(e)}"
+            TestCaseDao.log.error(msg)
+            return msg
+        return None

@@ -41,6 +41,10 @@ WHERE project.id = %(id_1)s AND project.deleted_at IS NULL
 [2023-03-12 19:59:20.255104] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
 [2023-03-12 20:00:22.794862] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
 [2023-03-12 20:02:36.997512] ERROR: UserDao: 获取用户:1项目列表失败, [Errno 22] Invalid argument
+[2023-03-13 07:56:28.323484] ERROR: UserDao: 添加用例失败:(mysql.connector.errors.DatabaseError) 1364 (HY000): Field 'expected' doesn't have a default value
+[SQL: INSERT INTO test_case (name, request_type, url, request_method, request_header, body, project_id, tag, `status`, priority, catalogue, created_at, updated_at, deleted_at, create_user, update_user) VALUES (%(name)s, %(request_type)s, %(url)s, %(request_method)s, %(request_header)s, %(body)s, %(project_id)s, %(tag)s, %(status)s, %(priority)s, %(catalogue)s, %(created_at)s, %(updated_at)s, %(deleted_at)s, %(create_user)s, %(update_user)s)]
+[parameters: {'name': '1', 'request_type': 1, 'url': '1', 'request_method': 'GET', 'request_header': '{}', 'body': '', 'project_id': 1, 'tag': '1', 'status': 1, 'priority': 'P0', 'catalogue': None, 'created_at': datetime.datetime(2023, 3, 13, 7, 56, 28, 320338), 'updated_at': datetime.datetime(2023, 3, 13, 7, 56, 28, 320338), 'deleted_at': None, 'create_user': 1, 'update_user': 1}]
+(Background on this error at: http://sqlalche.me/e/14/4xp6)
 [2023-03-13 12:16:03.201575] ERROR: UserDao: 获取用户:1项目列表失败, (mysql.connector.errors.ProgrammingError) 1054 (42S22): Unknown column 'project.app' in 'field list'
 [SQL: SELECT count(*) AS count_1 
 FROM (SELECT project.id AS project_id, project.name AS project_name, project.owner AS project_owner, project.app AS project_app, project.created_at AS project_created_at, project.updated_at AS project_updated_at, project.deleted_at AS project_deleted_at, project.create_user AS project_create_user, project.update_user AS project_update_user, project.private AS project_private, project.description AS project_description 
@@ -53,3 +57,4 @@ FROM (SELECT project.id AS project_id, project.name AS project_name, project.own
 FROM project 
 WHERE project.deleted_at IS NULL) AS anon_1]
 (Background on this error at: http://sqlalche.me/e/14/f405)
+[2023-03-14 07:38:20.006621] ERROR: UserDao: 执行用例失败:module 'app.dao.test_case.TestCaseDao' has no attribute 'query_test_case'
