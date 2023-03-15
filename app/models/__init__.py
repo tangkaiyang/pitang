@@ -22,6 +22,7 @@ Session = sessionmaker(engine)
 # 创建对象的基类
 Base = declarative_base()
 
+
 def update_model(dist, source, update_user=None, not_null=False):
     """
     通过setattr把Form表单的内容赋予这个数据库对象
@@ -40,3 +41,6 @@ def update_model(dist, source, update_user=None, not_null=False):
         if update_user:
             setattr(dist, 'update_user', update_user)
         setattr(dist, 'update_at', datetime.now())
+
+
+
