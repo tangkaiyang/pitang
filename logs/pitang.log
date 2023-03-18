@@ -58,3 +58,5 @@ FROM project
 WHERE project.deleted_at IS NULL) AS anon_1]
 (Background on this error at: http://sqlalche.me/e/14/f405)
 [2023-03-14 07:38:20.006621] ERROR: UserDao: 执行用例失败:module 'app.dao.test_case.TestCaseDao' has no attribute 'query_test_case'
+[2023-03-18 15:20:13.778446] INFO: UserDao: 有人访问你的网站了
+[2023-03-18 15:20:14.242493] INFO: UserDao: 有人访问你的网站了
