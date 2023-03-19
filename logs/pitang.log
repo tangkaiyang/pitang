@@ -60,3 +60,16 @@ WHERE project.deleted_at IS NULL) AS anon_1]
 [2023-03-14 07:38:20.006621] ERROR: UserDao: 执行用例失败:module 'app.dao.test_case.TestCaseDao' has no attribute 'query_test_case'
 [2023-03-18 15:20:13.778446] INFO: UserDao: 有人访问你的网站了
 [2023-03-18 15:20:14.242493] INFO: UserDao: 有人访问你的网站了
+[2023-03-19 14:47:35.825915] ERROR: UserDao: 新增环境:212121212失败,super() argument 1 must be type, not int
+[2023-03-19 14:50:51.688292] ERROR: UserDao: 新增环境:432432失败,super() argument 1 must be type, not int
+[2023-03-19 14:52:11.348319] ERROR: UserDao: 新增环境:53255失败,(mysql.connector.errors.IntegrityError) 1048 (23000): Column 'created_at' cannot be null
+[SQL: INSERT INTO environment (created_at, updated_at, deleted_at, create_user, update_user, id, name, remarks) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(create_user)s, %(update_user)s, %(id)s, %(name)s, %(remarks)s)]
+[parameters: {'created_at': None, 'updated_at': None, 'deleted_at': None, 'create_user': None, 'update_user': None, 'id': 0, 'name': '53255', 'remarks': ''}]
+(Background on this error at: http://sqlalche.me/e/14/gkpj)
+[2023-03-19 14:53:19.783669] ERROR: UserDao: 新增环境:434343失败,super() takes no keyword arguments
+[2023-03-19 15:13:47.851915] ERROR: UserDao: 新增环境:54354645634失败,(mysql.connector.errors.DataError) 1406 (22001): Data too long for column 'name' at row 1
+[SQL: INSERT INTO environment (created_at, updated_at, deleted_at, create_user, update_user, id, name, remarks) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(create_user)s, %(update_user)s, %(id)s, %(name)s, %(remarks)s)]
+[parameters: {'created_at': datetime.datetime(2023, 3, 19, 15, 13, 47, 812768), 'updated_at': datetime.datetime(2023, 3, 19, 15, 13, 47, 812768), 'deleted_at': None, 'create_user': 1, 'update_user': 1, 'id': 0, 'name': '54354645634', 'remarks': ''}]
+(Background on this error at: http://sqlalche.me/e/14/9h9h)
+[2023-03-19 16:27:57.584237] ERROR: UserDao: 删除环境失败,'int' object has no attribute 'get'
+[2023-03-19 16:28:38.704031] ERROR: UserDao: 删除环境失败,'int' object has no attribute 'get'

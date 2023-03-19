@@ -35,7 +35,10 @@ def add_environment(user_info):
     :param user_info:
     :return:
     """
-    return EnvironmentDao.insert_env(request.get_json(), user_info.get("id"))
+    err = EnvironmentDao.insert_env(request.get_json(), user_info.get("id"))
+    if err is not None:
+        return jsonify(dict(code=110, data=None, msg=err))
+    return jsonify(dict(code=0, data=None, msg="操作成功"))
 
 
 @env.route("/update", methods=["POST"])
@@ -46,7 +49,10 @@ def update_environment(user_info):
     :param user_info:
     :return:
     """
-    return EnvironmentDao.update_env(request.get_json(), user_info.get("id"))
+    err = EnvironmentDao.update_env(request.get_json(), user_info.get("id"))
+    if err is not None:
+        return jsonify(dict(code=110, data=None, msg=err))
+    return jsonify(dict(code=0, data=None, msg="操作成功"))
 
 
 @env.route("/delete", methods=["POST"])
@@ -57,4 +63,8 @@ def delete_environment(user_info):
     :param user_info:
     :return:
     """
-    return EnvironmentDao.delete_env(request.args, user_info.get("id"))
+
+    err = EnvironmentDao.delete_env(request.get_json(), user_info.get("id"))
+    if err is not None:
+        return jsonify(dict(code=110, data=None, msg=err))
+    return jsonify(dict(code=0, data=None, msg="操作成功"))

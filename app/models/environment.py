@@ -8,7 +8,7 @@ class Environment(BaseModel):
     remarks = db.Column(db.String(200))
 
     def __init__(self, name, remarks, user, id=0):
-        super(user)
+        super().__init__(user)
 
         self.id = id
         self.name = name
