@@ -73,3 +73,7 @@ WHERE project.deleted_at IS NULL) AS anon_1]
 (Background on this error at: http://sqlalche.me/e/14/9h9h)
 [2023-03-19 16:27:57.584237] ERROR: UserDao: 删除环境失败,'int' object has no attribute 'get'
 [2023-03-19 16:28:38.704031] ERROR: UserDao: 删除环境失败,'int' object has no attribute 'get'
+[2023-03-21 08:10:13.820207] ERROR: UserDao: 查询失败,count() takes exactly one argument (0 given)
+[2023-03-21 08:10:28.969378] ERROR: UserDao: 查询失败,count() takes exactly one argument (0 given)
+[2023-03-21 08:11:16.583200] ERROR: UserDao: 查询失败,count() takes exactly one argument (0 given)
+[2023-03-21 08:13:56.233562] ERROR: UserDao: 查询失败,count() takes exactly one argument (0 given)

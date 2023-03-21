@@ -20,7 +20,7 @@ def list_environments(user_info):
     Args:
         user_info (dict): 用户信息
     """
-    result, err = EnvironmentDao.list_env(
+    result, total, err = EnvironmentDao.list_env(
         request.args)
     if err is not None:
         return jsonify(dict(code=110, data=result, msg=err))

@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from sqlalchemy import or_
+from sqlalchemy.sql.functions import count
 
 from app.models import db
 from app.models.environment import Environment
@@ -63,11 +64,13 @@ class EnvironmentDao(object):
     def list_env(data):
         try:
             search_term = data.get("name", "")
+            # todo 补充排序,分页
             environments = Environment.query.filter_by(deleted_at=None).filter(
                 or_(Environment.name.like('%{}%'.format(search_term)),
                     Environment.remarks.like('%{}%'.format(search_term)))).all()
-            return environments, None
+            total = count(environments)
+            return environments, total, None
         except Exception as e:
             msg = f"查询失败,{e}"
             EnvironmentDao.log.error(msg)
-            return [], msg
+            return [], 0, msg

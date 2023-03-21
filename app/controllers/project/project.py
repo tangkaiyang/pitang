@@ -25,6 +25,7 @@ def list_project(user_info):
     page, size = PageHandler.page()
     user_role, user_id = user_info["role"], user_info["id"]
     name = request.args.get("name")
+    # todo 返回total
     result, total, err = ProjectDao.list_project(
         user_id, user_role, page, size, name)
     if err is not None:
