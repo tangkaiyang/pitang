@@ -77,3 +77,17 @@ WHERE project.deleted_at IS NULL) AS anon_1]
 [2023-03-21 08:10:28.969378] ERROR: UserDao: 查询失败,count() takes exactly one argument (0 given)
 [2023-03-21 08:11:16.583200] ERROR: UserDao: 查询失败,count() takes exactly one argument (0 given)
 [2023-03-21 08:13:56.233562] ERROR: UserDao: 查询失败,count() takes exactly one argument (0 given)
+[2023-03-22 16:43:23.930546] ERROR: UserDao: 新增环境:test1失败,Python type builtin_function_or_method cannot be converted
+[2023-03-22 16:43:50.450185] ERROR: UserDao: 新增环境:test2失败,Python type builtin_function_or_method cannot be converted
+[2023-03-22 17:16:38.786069] ERROR: UserDao: 新增环境:1失败,(mysql.connector.errors.IntegrityError) 1062 (23000): Duplicate entry '1' for key 'name'
+[SQL: INSERT INTO environment (created_at, updated_at, deleted_at, create_user, update_user, id, name, remarks) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(create_user)s, %(update_user)s, %(id)s, %(name)s, %(remarks)s)]
+[parameters: {'created_at': datetime.datetime(2023, 3, 22, 17, 16, 38, 775052), 'updated_at': datetime.datetime(2023, 3, 22, 17, 16, 38, 775052), 'deleted_at': None, 'create_user': 1, 'update_user': 1, 'id': 0, 'name': '1', 'remarks': ''}]
+(Background on this error at: http://sqlalche.me/e/14/gkpj)
+[2023-03-22 17:17:56.251613] ERROR: UserDao: 新增环境:1失败,(mysql.connector.errors.IntegrityError) 1062 (23000): Duplicate entry '1' for key 'name'
+[SQL: INSERT INTO environment (created_at, updated_at, deleted_at, create_user, update_user, id, name, remarks) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(create_user)s, %(update_user)s, %(id)s, %(name)s, %(remarks)s)]
+[parameters: {'created_at': datetime.datetime(2023, 3, 22, 17, 17, 56, 247613), 'updated_at': datetime.datetime(2023, 3, 22, 17, 17, 56, 247613), 'deleted_at': None, 'create_user': 1, 'update_user': 1, 'id': 0, 'name': '1', 'remarks': ''}]
+(Background on this error at: http://sqlalche.me/e/14/gkpj)
+[2023-03-22 17:18:41.321116] ERROR: UserDao: 新增环境:1失败,(mysql.connector.errors.IntegrityError) 1062 (23000): Duplicate entry '1' for key 'name'
+[SQL: INSERT INTO environment (created_at, updated_at, deleted_at, create_user, update_user, id, name, remarks) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(create_user)s, %(update_user)s, %(id)s, %(name)s, %(remarks)s)]
+[parameters: {'created_at': datetime.datetime(2023, 3, 22, 17, 18, 41, 317116), 'updated_at': datetime.datetime(2023, 3, 22, 17, 18, 41, 317116), 'deleted_at': None, 'create_user': 1, 'update_user': 1, 'id': 0, 'name': '1', 'remarks': ''}]
+(Background on this error at: http://sqlalche.me/e/14/gkpj)
