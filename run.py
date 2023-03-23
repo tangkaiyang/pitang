@@ -5,6 +5,7 @@ from app.controllers.request.http import req
 from app.controllers.project.project import pr
 from app.controllers.testcase.testcase import ts
 from app.controllers.environment.environment import env
+from app.controllers.environment.global_config import gconfig
 from app import dao
 
 # 注册蓝图
@@ -13,6 +14,7 @@ pitang.register_blueprint(req)
 pitang.register_blueprint(pr)
 pitang.register_blueprint(ts)
 pitang.register_blueprint(env)
+pitang.register_blueprint(gconfig)
 
 
 @pitang.route('/')
