@@ -6,7 +6,7 @@ class GlobalConfig(BaseModel):
     id: int = None
     key: str
     value: str
-    env: str = None
+    env_id: int = None
     key_type: int
     enable: bool
 

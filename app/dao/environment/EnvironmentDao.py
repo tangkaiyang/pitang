@@ -54,6 +54,7 @@ class EnvironmentDao(object):
             env.name = name
             env.remarks = remarks
             env.update_user = user
+            env.updated_at = datetime.now()
             db.session.commit()
         except Exception as e:
             msg = f"更新环境失败,{e}"
