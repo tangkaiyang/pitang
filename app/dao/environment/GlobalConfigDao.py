@@ -85,7 +85,7 @@ class GlobalConfigDao(object):
             search_term = data.get("key", "")
             # todo 补充排序,分页
             configs = GlobalConfig.query.filter_by(deleted_at=None).filter(
-                GlobalConfig(env_id, key, value, key_type, enable, user).key.like('%{}%'.format(search_term))).all()
+                GlobalConfig.key.like('%{}%'.format(search_term))).all()
             total = count(configs)
             return configs, total, None
         except Exception as e:
