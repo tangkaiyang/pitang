@@ -17,13 +17,16 @@ class GlobalConfigDao(object):
         try:
             env_id, key, value, key_type, enable = data.get("env_id"), data.get("key"), data.get("value"), data.get(
                 "key_type"), data.get("enable")
-            query = Environment.query.filter_by(id=env_id, deleted_at=None).first()
+            query = Environment.query.filter_by(
+                id=env_id, deleted_at=None).first()
             if query is None:
                 return "环境不存在"
-            query_config = GlobalConfig.query.filter_by(id=env_id, key=key, deleted_at=None).first()
+            query_config = GlobalConfig.query.filter_by(
+                id=env_id, key=key, deleted_at=None).first()
             if query_config is not None:
                 return f"全局变量{key}已存在"
-            global_config = GlobalConfig(env_id, key, value, key_type, enable, user)
+            global_config = GlobalConfig(
+                env_id, key, value, key_type, enable, user)
             db.session.add(global_config)
             db.session.commit()
         except Exception as e:
@@ -35,7 +38,8 @@ class GlobalConfigDao(object):
     def delete_global_config(data, user):
         try:
             config_id = data.get("id")
-            query = GlobalConfig.query.filter_by(id=config_id, deleted_at=None).first()
+            query = GlobalConfig.query.filter_by(
+                id=config_id, deleted_at=None).first()
             if query is None:
                 return f"全局变量不存在"
             query.deleted_at = datetime.now()
@@ -53,10 +57,12 @@ class GlobalConfigDao(object):
             update_id, env_id, key, value, key_type, enable = data.get("id"), data.get("env_id"), data.get(
                 "key"), data.get("value"), data.get(
                 "key_type"), data.get("enable")
-            query = Environment.query.filter_by(id=env_id, deleted_at=None).first()
+            query = Environment.query.filter_by(
+                id=env_id, deleted_at=None).first()
             if query is None:
                 return "环境不存在"
-            query_config = GlobalConfig.query.filter_by(id=env_id, key=key, deleted_at=None).first()
+            query_config = GlobalConfig.query.filter_by(
+                id=env_id, key=key, deleted_at=None).first()
             if query_config is None:
                 return f"全局变量{key}不存在"
             # todo request属性复制给数据行
@@ -76,13 +82,12 @@ class GlobalConfigDao(object):
     @staticmethod
     def list_global_config(data):
         try:
-            search_term = data.get("name", "")
+            search_term = data.get("key", "")
             # todo 补充排序,分页
-            environments = Environment.query.filter_by(deleted_at=None).filter(
-                or_(Environment.name.like('%{}%'.format(search_term)),
-                    Environment.remarks.like('%{}%'.format(search_term)))).all()
-            total = count(environments)
-            return environments, total, None
+            configs = GlobalConfig.query.filter_by(deleted_at=None).filter(
+                GlobalConfig(env_id, key, value, key_type, enable, user).key.like('%{}%'.format(search_term))).all()
+            total = count(configs)
+            return configs, total, None
         except Exception as e:
             msg = f"查询失败,{e}"
             GlobalConfigDao.log.error(msg)
