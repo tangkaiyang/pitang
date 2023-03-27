@@ -95,3 +95,14 @@ WHERE project.deleted_at IS NULL) AS anon_1]
 [2023-03-23 19:14:11.484631] ERROR: UserDao: 查询失败,name 'env_id' is not defined
 [2023-03-23 19:17:59.131508] ERROR: UserDao: 查询失败,name 'env_id' is not defined
 [2023-03-23 19:21:58.626762] ERROR: UserDao: 查询失败,name 'env_id' is not defined
+[2023-03-24 07:47:49.712903] ERROR: UserDao: 新增全局变量:2失败,(mysql.connector.errors.IntegrityError) 1048 (23000): Column 'key_type' cannot be null
+[SQL: INSERT INTO global_config (created_at, updated_at, deleted_at, create_user, update_user, id, env_id, `key`, value, key_type, enable) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(create_user)s, %(update_user)s, %(id)s, %(env_id)s, %(key)s, %(value)s, %(key_type)s, %(enable)s)]
+[parameters: {'created_at': datetime.datetime(2023, 3, 24, 7, 47, 49, 704925), 'updated_at': datetime.datetime(2023, 3, 24, 7, 47, 49, 704925), 'deleted_at': None, 'create_user': 1, 'update_user': 1, 'id': 0, 'env_id': '2', 'key': '2', 'value': '2', 'key_type': None, 'enable': 1}]
+(Background on this error at: http://sqlalche.me/e/14/gkpj)
+[2023-03-25 08:19:47.776805] ERROR: UserDao: 更新全局变量失败,'int' object has no attribute 'get'
+[2023-03-25 08:20:54.936489] ERROR: UserDao: 更新全局变量失败,'int' object has no attribute 'get'
+[2023-03-25 08:21:36.244543] ERROR: UserDao: 更新全局变量失败,'int' object has no attribute 'get'
+[2023-03-25 13:53:37.659021] ERROR: UserDao: 更新全局变量失败,'int' object has no attribute 'get'
+[2023-03-25 14:14:05.290165] ERROR: UserDao: 更新全局变量失败,(builtins.ValueError) Value 222 is not None, True, or False
+[SQL: UPDATE global_config SET updated_at=%(updated_at)s, enable=%(enable)s WHERE global_config.id = %(global_config_id)s]
+[parameters: [{'enable': 222, 'updated_at': datetime.datetime(2023, 3, 25, 14, 14, 5, 288796), 'global_config_id': 1}]]

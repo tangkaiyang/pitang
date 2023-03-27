@@ -52,25 +52,30 @@ class GlobalConfigDao(object):
 
     @staticmethod
     def update_global_config(data, user):
+
         try:
             # todo request属性复制给dao
-            update_id, env_id, key, value, key_type, enable = data.get("id"), data.get("env_id"), data.get(
-                "key"), data.get("value"), data.get(
-                "key_type"), data.get("enable")
+            update_id = data.get("id")
+            query_config = GlobalConfig.query.filter_by(
+                id=update_id, deleted_at=None).first()
+            if query_config is None:
+                return f"全局变量不存在"
+            env_id = data.get("env_id") if data.get("env_id") is not None else query_config.env_id
             query = Environment.query.filter_by(
                 id=env_id, deleted_at=None).first()
             if query is None:
                 return "环境不存在"
-            query_config = GlobalConfig.query.filter_by(
-                id=env_id, key=key, deleted_at=None).first()
-            if query_config is None:
-                return f"全局变量{key}不存在"
+            key = data.get("key") or query_config.key
+            tmp = GlobalConfig.query.filter(GlobalConfig.id != update_id).filter_by(key=key, deleted_at=None).first()
+            if tmp is not None:
+                return "key已存在"
+
             # todo request属性复制给数据行
             query_config.env_id = env_id
             query_config.key = key
-            query_config.value = value
-            query_config.key_type = key_type
-            query_config.enable = enable
+            query_config.value = data.get("value") or query_config.value
+            query_config.key_type = data.get("key_type") or query_config.key_type
+            query_config.enable = data.get("enable") if data.get("enable") is not None else query_config.enable
             query_config.update_user = user
             query_config.updated_at = datetime.now()
             db.session.commit()
