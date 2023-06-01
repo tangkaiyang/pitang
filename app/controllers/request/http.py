@@ -38,3 +38,25 @@ def execute_case(user_info):
     if err:
         return jsonify(dict(code=110, data=result, msg=err))
     return jsonify(dict(code=0, data=result, msg="操作成功"))
+
+
+@req.route("/test", methods=['POST'])
+def is_auto_transfer():
+    data = request.get_json()
+    product_tags = data.get("productTags")
+    if not product_tags or len(product_tags) == 0:
+        return jsonify(dict(code=400, msg="productTags不能为空"))
+    taxNum = data.get("taxNum")
+    if not taxNum:
+        return jsonify(dict(code=400, msg="taxNum不能为空"))
+    if taxNum == "91330104TKYTEST001":
+        auto_transfer = 1
+    else:
+        auto_transfer = 0
+    data = []
+    for tag in product_tags:
+        data.append({
+            "productTag": tag,
+            "isAutoTransfer": auto_transfer
+        })
+    return jsonify(dict(result=None, code=200, message="成功", data=data))
