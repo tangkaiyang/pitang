@@ -5,6 +5,9 @@ from app.utils.decorator import permission
 from app.utils.executor import Executor
 
 from app.middleware.HttpClient import Request
+from app.middleware.MyRedis import MyRedis
+
+from app.enums import RedisEnum
 
 req = Blueprint("request", __name__, url_prefix="/request")
 
@@ -22,6 +25,8 @@ def http_request(user_info):
     body = data.get("body")
     headers = data.get("headers")
     r = Request(url, data=body, headers=headers)
+    my_redis = MyRedis()
+    my_redis.set(RedisEnum.REQUEST_HISTORY.value+str(url),str(url)+ str(body) + str(headers))
     response = r.request(method)
     if response.get("status"):
         return jsonify(dict(code=0, data=response, msg="操作成功"))
@@ -31,6 +36,17 @@ def http_request(user_info):
 @req.route("/run")
 @permission()
 def execute_case(user_info):
+    case_id = request.args.get("case_id")
+    if not case_id or not case_id.isdigit():
+        return jsonify(dict(code=101, msg="传入用例id有误"))
+    result, err = Executor.run(case_id)
+    if err:
+        return jsonify(dict(code=110, data=result, msg=err))
+    return jsonify(dict(code=0, data=result, msg="操作成功"))
+
+@req.route("/history")
+@permission()
+def query_history(user_info):
     case_id = request.args.get("case_id")
     if not case_id or not case_id.isdigit():
         return jsonify(dict(code=101, msg="传入用例id有误"))

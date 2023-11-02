@@ -35,3 +35,7 @@ class Config(object):
     GUEST = 0
     MANAGER = 1
     ADMIN = 2
+    
+    REDIS_HOST = "127.0.0.1"
+    REDIS_PORT = 6379
+    REDIS_DB = 1
