@@ -26,7 +26,7 @@ def http_request(user_info):
     headers = data.get("headers")
     r = Request(url, data=body, headers=headers)
     my_redis = MyRedis()
-    my_redis.set(RedisEnum.REQUEST_HISTORY.value+str(url),str(url)+ str(body) + str(headers))
+    my_redis.set(RedisEnum.REQUEST_HISTORY + str(url), str(url) + str(body) + str(headers))
     response = r.request(method)
     if response.get("status"):
         return jsonify(dict(code=0, data=response, msg="操作成功"))
@@ -43,6 +43,7 @@ def execute_case(user_info):
     if err:
         return jsonify(dict(code=110, data=result, msg=err))
     return jsonify(dict(code=0, data=result, msg="操作成功"))
+
 
 @req.route("/history")
 @permission()

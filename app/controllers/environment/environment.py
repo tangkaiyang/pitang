@@ -28,7 +28,7 @@ def list_environments(user_info):
 
 
 @env.route("/add", methods=["POST"])
-@permission()
+# @permission()
 def add_environment(user_info):
     """
     新建环境
